@@ -112,7 +112,7 @@ dup_col =[
     "Quantity",
     "Price Per Unit"
 ]
-df = df.drop_duplicates(subset = dup_col, keep = "first")
+df["is_potential_duplicate"] = df.duplicated(subset = dup_col, keep = False)
 
 #  ================================================================================================
 #  Final dataset integrity checks

@@ -53,10 +53,28 @@ The goal is to apply clear business rules, enforce data integrity, and produce a
 - Standardized item names.
 - Removed missing or invalid items.
 
+### 10. Potential Duplicates Identification
+**Business rule:** The dataset does not provide a guaranteed unique transaction
+  identifier that can conclusively distinguish individual customer purchases.
+
+**Approach** Rather than removing records and risking loss of valid transactions, 
+  potential duplicates are *flagged* based on shared transactional attributes:
+  - Transaction Date
+  - Item
+  - Location
+  - Quantity
+  - Price Per Unit
+A boolen column `is_potential_duplicate` is added to indicate records that share indentical values across these attributes.
+
+**Rationale:** Muliple customers may legitimately purchase the same item in the same quantity,
+location and time window. Flagging preserves data intergity while allowing analysts to make
+context-aware decisions during dowmstream analysis.
+
 ## Output
 The final cleaned dataset is saved as:
 
 `cleaned_transaction.csv`
+
 
 This dataset is consistent, validated, and ready for analysis.
 
@@ -65,3 +83,15 @@ This dataset is consistent, validated, and ready for analysis.
 - Pandas
 - Git and GitHub
 - VS Code
+
+## Assumptions & Limitations:
+- Invalid rows are removed rather than logged for simplicity.
+- The data set does not contain a guaranteed unique transaction key for definitive
+  duplicate detection.
+- Potential duplicates are indentified based on shared transactional attributes and flagged
+  instead of removed.
+- Flagged duplicates may represent either genuine repeat purchase or data duplication.
+- Business rules are hard coded for this dataset and would be externalized
+  in production pipeline.
+- The pipeline prioritizes clean analytical output over audit level traceability
+  for this project's scope.
