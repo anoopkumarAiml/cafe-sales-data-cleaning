@@ -120,7 +120,8 @@ df["is_potential_duplicate"] = df.duplicated(subset = dup_col, keep = False)
 
 assert df["Item"].isna().sum() == 0
 
-
+#  ================================================================================================
 #  Save cleaned dataset
+#  ================================================================================================
 df.to_csv("cleaned_transaction.csv", index = False )
 

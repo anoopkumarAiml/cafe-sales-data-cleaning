@@ -70,9 +70,9 @@ A boolen column `is_potential_duplicate` is added to indicate records that share
 location and time window. Flagging preserves data intergity while allowing analysts to make
 context-aware decisions during dowmstream analysis.
 
-## Output
-The final cleaned dataset is saved as:
 
+## Output
+The final cleaned dataset is saved as
 `cleaned_transaction.csv`
 
 
