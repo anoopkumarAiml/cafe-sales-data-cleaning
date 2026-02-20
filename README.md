@@ -1,4 +1,4 @@
-# Cafe Sales Data Cleaning Project
+# Cafe Sales Data Cleaning 
 
 ## Overview
 This project focuses on cleaning and validating a raw cafe sales dataset to make it reliable for analysis and reporting.
